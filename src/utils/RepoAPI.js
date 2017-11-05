@@ -7,11 +7,12 @@ module.exports = {
       .get(`https://api.github.com/users/${user}/repos`)
       .set('Accept', 'application/json')
       .end((err, response) => {
-        AppActions.receiveRepoInfo(response.body);
-        if (err) {
-          console.error(err);
+        if (response.status === 200) {
+          AppActions.getRepoList(response.body);
+        } else {
+          AppActions.getRepoList({ msg: 'Error' });
         }
+        return true;
       });
-    return true;
   },
 };

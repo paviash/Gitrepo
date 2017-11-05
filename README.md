@@ -7,6 +7,6 @@ To install dependencies:
 $ npm install
 
 To run:
-$ npm run dev
+$ npm start
 
 The project will run at http://localhost:8080/

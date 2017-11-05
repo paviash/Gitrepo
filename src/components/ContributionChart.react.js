@@ -1,16 +1,16 @@
 const React = require('react');
 const reactCreateClass = require('create-react-class');
+const ContributionStore = require('../stores/ContributionStore');
 const {
+  BarChart,
+  Bar,
   ResponsiveContainer,
-  LineChart,
-  Line,
   XAxis,
   YAxis,
   CartesianGrid,
   Tooltip,
   Legend,
 } = require('Recharts');
-const ContributionStore = require('../stores/ContributionStore');
 
 function getContributionState() {
   return {
@@ -29,35 +29,37 @@ const ContributionChart = reactCreateClass({
   },
   render() {
     const data = Object.values(this.state.contributions);
-    return (
-      <div>
-        <h3>Users vs Contributions for {this.props.repo}</h3>
-        <ResponsiveContainer width="90%" height={400}>
-          <LineChart
-            height={400}
-            data={data}
-            margin={{
-              top: 5,
-              right: 30,
-              left: 20,
-              bottom: 5,
-            }}
-          >
-            <XAxis dataKey="login" />
-            <YAxis dataKey="contributions" />
-            <CartesianGrid strokeDasharray="3 3" />
-            <Tooltip />
-            <Legend />
-            <Line
-              type="monotone"
-              dataKey="contributions"
-              stroke="#8884d8"
-              activeDot={{ r: 10 }}
-            />
-          </LineChart>
-        </ResponsiveContainer>
-      </div>
-    );
+    let chart;
+    if (data[0] === 'Error') {
+      chart = <p>This repo has no contributions</p>;
+    } else {
+      chart = (
+        <div>
+          <h4>Users vs Contributions for {this.props.repo}</h4>
+          <ResponsiveContainer width="90%" height={400}>
+            <BarChart
+              height={400}
+              layout="horizontal"
+              data={data}
+              margin={{
+                top: 5,
+                right: 30,
+                left: 20,
+                bottom: 5,
+              }}
+            >
+              <XAxis dataKey="login" />
+              <YAxis />
+              <CartesianGrid />
+              <Tooltip />
+              <Legend verticalAlign="top" height={36} />
+              <Bar dataKey="contributions" label="login" fill="#8884d8" />
+            </BarChart>
+          </ResponsiveContainer>
+        </div>
+      );
+    }
+    return <div>{chart}</div>;
   },
   onChange() {
     this.setState(getContributionState());

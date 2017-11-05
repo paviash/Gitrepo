@@ -3,7 +3,7 @@ const AppConstants = require('../constants/AppConstants');
 const EventEmitter = require('events').EventEmitter;
 const _ = require('underscore');
 
-let store = {};
+let store = { initial: 'repos' };
 
 function loadRepoData(data) {
   store = data;

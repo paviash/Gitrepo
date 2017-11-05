@@ -9,7 +9,7 @@ function getRepoState() {
   return {
     repos: RepoStore.getList(),
     selected: ' ',
-    found: ' ',
+    found: null,
   };
 }
 const RepoList = reactCreateClass({
@@ -25,19 +25,31 @@ const RepoList = reactCreateClass({
   render() {
     const data = Object.values(this.state.repos);
     let contributions;
-    if (this.state.found === 'found') {
+    let repolist;
+    if (data[0] === 'Error') {
+      repolist = <h4> User Does not exist </h4>;
+    } else if (data.length > 0) {
+      repolist = (
+        <div>
+          <h4>Repositories for {this.props.user}</h4>
+          <Typeahead
+            labelKey="name"
+            options={data}
+            onChange={this.handleChange}
+          />
+        </div>
+      );
+    } else {
+      repolist = <h4> This User has no repositories</h4>;
+    }
+    if (this.state.found === true) {
       contributions = <ContributionChart repo={this.state.selected} />;
-    } else if (this.state.found === 'notfound') {
-      contributions = <p>No Users found</p>;
+    } else if (this.state.found === false) {
+      contributions = <p>Repository not found</p>;
     }
     return (
       <div className="Repo-List">
-        <h3>Repositories for {this.props.user}</h3>
-        <Typeahead
-          labelKey="name"
-          options={data}
-          onChange={this.handleChange}
-        />
+        {repolist}
         {contributions}
       </div>
     );
@@ -47,12 +59,12 @@ const RepoList = reactCreateClass({
       const repoSelected = item[0].full_name;
       this.setState({
         selected: repoSelected,
-        found: 'found',
+        found: true,
       });
       ContributionAPI.get(repoSelected);
     } else {
       this.setState({
-        found: 'notfound',
+        found: false,
       });
     }
   },
