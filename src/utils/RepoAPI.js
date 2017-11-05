@@ -5,8 +5,6 @@ module.exports = {
   get(user) {
     request
       .get(`https://api.github.com/users/${user}/repos`)
-      .query({ query: 'somequery' })
-      .query({ cachebuster: Date.now().toString() })
       .set('Accept', 'application/json')
       .end((err, response) => {
         AppActions.receiveRepoInfo(response.body);

@@ -7,9 +7,6 @@ const UserList = require('./components/UserList.react');
 
 UserAPI.get();
 
-ReactDOM.render(
-  <UserList />,
-  document.getElementById('application'),
-);
+ReactDOM.render(<UserList />, document.getElementById('application'));
 
 module.hot.accept();
