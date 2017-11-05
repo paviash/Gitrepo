@@ -7,10 +7,12 @@ Github explorer:
 Project structure:
 
  .
+ 
     ├── dist                 
     ├── src                      
     ├── webpack.config.json                  
     ├── package.json
+    
     └── README.md
 
 Prerequisites : 
