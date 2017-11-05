@@ -2,6 +2,23 @@
 Github explorer:
 - Lists the repositories for a given git user.
 - On selecting a user repository, displays a chart of number of contributions per user in descending order.
+- Developed using react/FLUX
+
+Project structure:
+-dist
+  -bundle.js
+  -index.html
+  -main.css
+-src
+  -actions
+  -components
+  -constants
+  -dispatcher
+  -stores
+  -utils
+  -index.js  
+-package.json
+-webpack.config.json
 
 Prerequisites : 
 - node 
@@ -18,3 +35,7 @@ The project will run at http://localhost:8080/
 API Reference :
 https://api.github.com/users
 https://api.github.com/repos
+
+Issues :
+- Using ES6, does not render in IE.
+- github API limits GET to 30 records (max 100), So replaced typeahead with normal text search.
