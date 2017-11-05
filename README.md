@@ -5,20 +5,12 @@ Github explorer:
 - Developed using react/FLUX
 
 Project structure:
-|-dist
-|--bundle.js
-|--index.html
-|--main.css
--src
---actions
---components
---constants
---dispatcher
---stores
---utils
--index.js  
--package.json
--webpack.config.json
+ .
+    ├── dist                 
+    ├── src                      
+    ├── webpack.config.json                  
+    ├── package.json
+    └── README.md
 
 Prerequisites : 
 - node 
