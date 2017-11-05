@@ -4,7 +4,7 @@ const request = require('superagent');
 module.exports = {
   get() {
     request
-      .get('https://api.github.com/repos/angular/angular/contributors')
+      .get('https://api.github.com/users?per_page=100')
       .set('Accept', 'application/json')
       .end((err, response) => {
         AppActions.getUsers(response.body);
