@@ -5,6 +5,7 @@ Github explorer:
 - Developed using react/FLUX
 
 Project structure:
+
  .
     ├── dist                 
     ├── src                      
