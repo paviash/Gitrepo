@@ -5,10 +5,10 @@ Github explorer:
 - Developed using react/FLUX
 
 Project structure:
--dist
---bundle.js
---index.html
---main.css
+|-dist
+|--bundle.js
+|--index.html
+|--main.css
 -src
 --actions
 --components
