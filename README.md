@@ -6,17 +6,17 @@ Github explorer:
 
 Project structure:
 -dist
-  -bundle.js
-  -index.html
-  -main.css
+--bundle.js
+--index.html
+--main.css
 -src
-  -actions
-  -components
-  -constants
-  -dispatcher
-  -stores
-  -utils
-  -index.js  
+--actions
+--components
+--constants
+--dispatcher
+--stores
+--utils
+-index.js  
 -package.json
 -webpack.config.json
 
