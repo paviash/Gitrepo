@@ -1,0 +1,5 @@
+module.exports = {
+  GET_REPOS: 'GET_REPOS',
+  GET_CONTRIBUTORS: 'GET_CONTRIBUTORS',
+  GET_USERS: 'GET_USERS',
+};
